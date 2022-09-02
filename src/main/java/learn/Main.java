@@ -1,8 +1,18 @@
 package learn;
 
+import learn.algorithm.BubbleSort;
+import learn.algorithm.Tool;
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!!!");
+        int[] arr = {2, 3, 8, 5, 6, 1, 0};
+        System.out.println("排序前：");
+        Tool.printArr(arr);
+
+        BubbleSort.bubbleSort(arr);
+
+        System.out.println("排序后：");
+        Tool.printArr(arr);
     }
 }
