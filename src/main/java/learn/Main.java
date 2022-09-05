@@ -1,9 +1,6 @@
 package learn;
 
-import learn.algorithm.BubbleSort;
-import learn.algorithm.InsertionSort;
-import learn.algorithm.SelectionSort;
-import learn.algorithm.Tool;
+import learn.algorithm.*;
 
 public class Main {
 
@@ -12,7 +9,8 @@ public class Main {
         System.out.println("排序前：");
         Tool.printArr(arr);
 
-        InsertionSort.insertionSort(arr);
+        HeapSort.heapSort(arr);
+//        InsertionSort.insertionSort(arr);
 //        SelectionSort.selectionSort(arr);
 //        BubbleSort.bubbleSort(arr);
 
