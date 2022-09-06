@@ -9,7 +9,8 @@ public class Main {
         System.out.println("排序前：");
         Tool.printArr(arr);
 
-        HeapSort.heapSort(arr);
+        QuickSort.quickSort(arr);
+//        HeapSort.heapSort(arr);
 //        InsertionSort.insertionSort(arr);
 //        SelectionSort.selectionSort(arr);
 //        BubbleSort.bubbleSort(arr);
