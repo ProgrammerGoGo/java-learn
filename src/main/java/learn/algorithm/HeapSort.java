@@ -38,6 +38,7 @@ public class HeapSort {
         }
     }
 
+    // 核心方法。对i位置的节点构建堆，如果构建过程中父节点下移成为了子节点，需要再次对下移的父节点再次构建堆
     private static void heapify(int[] arr, int i, int len) {
         // 先根据堆性质，找出i左右节点的索引
         int left = 2 * i + 1;
@@ -54,7 +55,7 @@ public class HeapSort {
         if (maxIndex != i) {
             // 如果最大值不是当前非叶子节点的值，那么就把当前节点和最大值的子节点值互换
             Tool.swap(arr, maxIndex, i);
-            // 因为互换之后，子节点的值变了，如果该子节点也有自己的子节点，仍需要再次调整。
+            // 因为互换之后，子节点的值变了，如果该子节点也有自己的子节点，仍需要再次调整，直到 max==i 即当前i节点已经是堆了。
             heapify(arr, maxIndex, len);
         }
     }
