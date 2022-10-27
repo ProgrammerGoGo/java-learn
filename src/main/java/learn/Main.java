@@ -18,5 +18,6 @@ public class Main {
 
         System.out.println("排序后：");
         Tool.printArr(arr);
+
     }
 }
