@@ -12,6 +12,10 @@
 * [资料1](https://pdai.tech/md/spring/spring-x-framework-aop-source-4.html#%E4%BB%80%E4%B9%88%E6%98%AFjdk%E4%BB%A3%E7%90%86)
 * [资料2](https://www.cnblogs.com/gonjan-blog/p/6685611.html)
 
+```
+JDK代理自动生成的class是由sun.misc.ProxyGenerator来生成的。
+```
+
 在java的java.lang.reflect包下提供了一个Proxy类和一个InvocationHandler接口，通过这个类和这个接口可以生成JDK动态代理类和动态代理对象。
 
 大致可分为以下四个步骤：
@@ -26,7 +30,7 @@
     return invoke;
 }
 ```
-2、使用`Proxy`类的`getProxyClass`静态方法生成一个动态代理类`myProxyClass`
+2、使用`Proxy`类的`getProxyClass`静态方法生成一个动态代理类`myProxyClass`。实际上`getProxyClass`方法内部是调用`ProxyGenerator`类的`generateProxyClass`方法实现的
 
 3、获得`myProxyClass`中一个带`InvocationHandler`参数的构造器`constructor`
 
