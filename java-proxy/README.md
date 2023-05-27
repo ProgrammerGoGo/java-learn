@@ -17,9 +17,7 @@
 JDK代理自动生成的class是由sun.misc.ProxyGenerator来生成的。
 ```
 
-在java的java.lang.reflect包下提供了一个Proxy类和一个InvocationHandler接口，通过这个类和这个接口可以生成JDK动态代理类和动态代理对象。
-
-大致可分为以下四个步骤：
+在java的java.lang.reflect包下提供了一个Proxy类和一个InvocationHandler接口，通过这个类和这个接口可以生成JDK动态代理类和动态代理对象。大致可分为以下四个步骤：
 
 1、创建一个 `InvocationHandler` 对象（也可以使用匿名对象的方法）并实现接口方法
 ```java
@@ -51,4 +49,28 @@ jdk为我们的生成了一个叫`$Proxy0`（这个名字后面的0是编号，�
 代理类调用自己方法时，通过自身持有的中介类对象来调用中介类对象的`invoke`方法，从而达到代理执行被代理对象的方法。也就是说，动态代理通过中介类实现了具体的代理功能。
 
 # CGLib代理
+
+* [CGLIB(Code Generation Library) 介绍与原理](https://www.runoob.com/w3cnote/cglibcode-generation-library-intro.html)
+* [详述 JDK 和 CGLIB 动态代理的实现原理以及两者的区别](https://github.com/guobinhit/cg-blog/blob/master/articles/others/dynamic-proxy.md)
+
+## 什么是CGLib代理
+
+CGLIB是一个功能强大，高性能的代码生成包。它为没有实现接口的类提供代理，为JDK的动态代理提供了很好的补充。通常可以使用Java的动态代理创建代理，但当要代理的类没有实现接口或者为了更好的性能，CGLIB是一个好的选择。
+
+CGLIB作为一个开源项目，其代码托管在github [CGLib源码地址](https://github.com/cglib/cglib)
+
+## CGLib原理
+CGLIB 原理：动态生成一个要代理类的子类，子类重写目标类中所有非final的方法。在子类中采用方法拦截的技术拦截所有父类方法的调用，顺势织入横切逻辑。它比使用java反射的JDK动态代理要快。
+
+CGLIB 底层：使用字节码处理框架ASM，来转换字节码并生成新的类。不鼓励直接使用ASM，因为它要求你必须对JVM内部结构包括class文件的格式和指令集都很熟悉。
+
+CGLIB缺点：对于final方法，无法进行代理。
+
+
+代理类将目标类作为自己的父类并为其中的每个非final委托方法创建两个方法：
+
+一个是与目标方法签名相同的方法，它在方法中会通过super调用目标方法；
+
+另一个是代理类独有的方法，称之为Callback回调方法，它会判断这个方法是否绑定了拦截器（实现了`MethodInterceptor`接口的对象），若存在则将调用`intercept`方法对目标方法进行代理，也就是在前后加上一些增强逻辑。`intercept`中就会调用上面介绍的签名相同的方法。
+
 
