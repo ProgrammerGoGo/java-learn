@@ -1,4 +1,5 @@
 <img width="791" alt="截屏2023-05-27 下午4 50 38" src="https://github.com/ProgrammerGoGo/java-learn/assets/98639494/cdf43325-a559-47fe-b471-5dd8e1a55fb2">
+
 抽象主题（Subject）类：通过接口或抽象类声明真实主题和代理对象实现的业务方法。
 
 真实主题（Real Subject）类：实现了抽象主题中的具体业务，是代理对象所代表的真实对象，是最终要引用的对象。
