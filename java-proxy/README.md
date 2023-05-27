@@ -13,7 +13,23 @@
 
 大致可分为以下四个步骤：
 
-1、创建一个InvocationHandler对象（也可以使用匿名对象的方法）
+1、创建一个 `InvocationHandler` 对象（也可以使用匿名对象的方法）并实现接口方法
+```java
+// 匿名对象实现 InvocationHandler
+(proxy, method, args) -> {
+    System.out.println(">> before.");
+    Object invoke = method.invoke(object, args);
+    System.out.println(">> after.");
+    return invoke;
+}
+```
+2、使用`Proxy`类的`getProxyClass`静态方法生成一个动态代理类`myProxyClass`
+
+3、获得`myProxyClass`中一个带`InvocationHandler`参数的构造器`constructor`
+
+4、通过构造器`constructor`来创建一个动态实例`myProxy`
+
+上面四个步骤可以通过Proxy类的newProxyInstances方法来简化
 
 
 
