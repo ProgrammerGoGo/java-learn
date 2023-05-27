@@ -29,8 +29,10 @@
 
 4、通过构造器`constructor`来创建一个动态实例`myProxy`
 
-上面四个步骤可以通过Proxy类的newProxyInstances方法来简化
-
+注：上面四个步骤可以通过Proxy类的newProxyInstances方法来简化
+```java
+com.programmer.proxy.jdkproxy.UserProxy#getProxy()
+```
 
 
 
