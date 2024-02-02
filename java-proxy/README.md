@@ -21,7 +21,13 @@ JDK代理自动生成的class是由sun.misc.ProxyGenerator来生成的。
 
 1、创建一个 `InvocationHandler` 对象（也可以使用匿名对象的方法）并实现接口方法
 ```java
-// 匿名对象实现 InvocationHandler
+/**
+ * 匿名对象实现 InvocationHandler
+ *
+ * proxy：代表动态代理对象
+ * method：代表正在执行的方法（目标方法）
+ * args：代表调用目标方法时传入的实参
+ */
 (proxy, method, args) -> {
     System.out.println(">> before.");
     Object invoke = method.invoke(object, args);
