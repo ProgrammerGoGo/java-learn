@@ -1,5 +1,9 @@
 package com.programmer.proxy.jdkproxy;
 
+import sun.misc.ProxyGenerator;
+
+import java.io.FileOutputStream;
+
 /**
  * @Author programmerGoGo
  * @Description
